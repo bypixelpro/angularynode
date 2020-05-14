@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { TareasComponent } from './tareas.component';
+
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  template: 'Hola {{title}} <tareas></tareas>',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
