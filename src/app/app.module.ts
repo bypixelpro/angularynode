@@ -11,8 +11,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
-
 import { WebService } from './web.service';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -28,7 +28,8 @@ import { WebService } from './web.service';
     MatCardModule,
     MatInputModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [WebService],
   bootstrap: [AppComponent]
