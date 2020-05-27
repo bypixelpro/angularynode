@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
-import { TareasComponent } from './tareas.component';
-import { NuevaTareaComponent } from './nueva-tarea.component';
-
-
+import { NavComponent } from './nav.component';
 
 @Component({
   selector: 'app-root',
-  template: '<nueva-tarea></nueva-tarea><tareas></tareas>',
+  template: '<nav></nav><router-outlet></router-outlet>',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
