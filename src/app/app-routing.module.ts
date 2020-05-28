@@ -12,6 +12,10 @@ const routes: Routes = [{
 {
   path: 'tareas',
   component: TareasComponent
+},
+{
+  path: 'tareas/:username',
+  component: TareasComponent
 }];
 
 @NgModule({
