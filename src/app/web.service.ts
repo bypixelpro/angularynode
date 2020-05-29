@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { Subject } from "rxjs";
 
 
 @Injectable()
@@ -11,19 +12,21 @@ export class WebService {
 
   tareas: any;
   respuesta: any;
+  tareasSujeto = new Subject();
 
   constructor(private http: HttpClient, private _snackBar: MatSnackBar) {
     this.tareas = [];
-    this.getTask();
+    this.getTask('');
   }
 
-  async getTask() {
-    try {
-        this.respuesta = await this.http.get(this.APIURL + '/tareas').toPromise();
-        this.tareas = this.respuesta;
-    } catch (error) {
+  getTask(username) {
+        username = (username) ? '/' + username : '';
+        this.http.get(this.APIURL + '/tareas' + username).subscribe(res => {
+        this.tareas = res;
+        this.tareasSujeto.next(this.tareas);
+        }, error => {
         this.manejadorErrores('No se ha podido obtener tareas');
-    }
+    });
 
   }
   async postTask(_tarea) {

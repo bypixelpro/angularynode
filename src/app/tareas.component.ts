@@ -5,7 +5,7 @@ import { ActivatedRoute, Params } from "@angular/router";
 @Component({
   selector: 'tareas',
   template: `<h1>Listado tareas</h1>
-    <mat-card *ngFor="let tarea of webservice.tareas">
+    <mat-card *ngFor="let tarea of tareasLista">
     <mat-card-title [routerLink]="['/tareas', tarea.usuario]">{{tarea.usuario}}</mat-card-title>
     <mat-card-content>
     <p>
@@ -16,12 +16,18 @@ import { ActivatedRoute, Params } from "@angular/router";
     `
 })
 export class TareasComponent {
+  username: any;
+  tareasLista: any;
 
-  constructor(public webservice: WebService, private rutaActiva: ActivatedRoute){}
+  constructor(private webservice: WebService, private rutaActiva: ActivatedRoute){}
 
   ngOnInit(): void {
 
-    console.log(this.rutaActiva.snapshot.params.username);
+    this.username = (this.rutaActiva.snapshot.params.username);
+    this.webservice.getTask(this.username);
+    this.webservice.tareasSujeto.subscribe(tareas =>{
+      this.tareasLista = tareas;
+    });
 
   }
 
