@@ -10,20 +10,22 @@ export class WebService {
 
   APIURL = 'http://localhost:7070/api';
 
-  tareas: any;
+  private tareasDB: any;
   respuesta: any;
-  tareasSujeto = new Subject();
+  private tareasSujeto = new Subject();
+
+  tareas = this.tareasSujeto.asObservable();
 
   constructor(private http: HttpClient, private _snackBar: MatSnackBar) {
-    this.tareas = [];
+    this.tareasDB = [];
     this.getTask('');
   }
 
   getTask(username) {
         username = (username) ? '/' + username : '';
         this.http.get(this.APIURL + '/tareas' + username).subscribe(res => {
-        this.tareas = res;
-        this.tareasSujeto.next(this.tareas);
+        this.tareasDB = res;
+        this.tareasSujeto.next(this.tareasDB);
         }, error => {
         this.manejadorErrores('No se ha podido obtener tareas');
     });
@@ -32,7 +34,7 @@ export class WebService {
   async postTask(_tarea) {
     try {
         this.respuesta = await this.http.post(this.APIURL + '/tarea', _tarea).toPromise();
-        this.tareas.push(this.respuesta);
+        this.tareasDB.push(this.respuesta);
     } catch (error) {
       this.manejadorErrores('No se ha podido publicar tareas');
     }

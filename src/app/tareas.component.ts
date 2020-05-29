@@ -25,7 +25,7 @@ export class TareasComponent {
 
     this.username = (this.rutaActiva.snapshot.params.username);
     this.webservice.getTask(this.username);
-    this.webservice.tareasSujeto.subscribe(tareas =>{
+    this.webservice.tareas.subscribe(tareas =>{
       this.tareasLista = tareas;
     });
 
