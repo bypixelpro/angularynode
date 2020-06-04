@@ -3,27 +3,27 @@
     <mat-card-title>Registro usuario</mat-card-title>
         <mat-form-field class="example-full-width">
           <mat-label>Nombre:</mat-label>
-          <input formControlName="nombre" matInput placeholder="Nombre">
+          <input [ngClass]="{'error': isValid('nombre')}" formControlName="nombre" matInput placeholder="Nombre">
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
           <mat-label>Apellidos:</mat-label>
-          <input formControlName="apellidos" matInput placeholder="Apellidos">
+          <input [ngClass]="{'error': isValid('apellidos')}" formControlName="apellidos" matInput placeholder="Apellidos">
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
           <mat-label>Email:</mat-label>
-          <input formControlName="email" type="email" matInput placeholder="Email">
+          <input [ngClass]="{'error': isValid('email')}" formControlName="email" type="email" matInput placeholder="Email">
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
           <mat-label>Password:</mat-label>
-          <input formControlName="password" type="password" matInput placeholder="Password">
+          <input [ngClass]="{'error': isValid('password')}" formControlName="password" type="password" matInput placeholder="Password">
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
           <mat-label>Confirmar Password:</mat-label>
-          <input formControlName="cpassword" type="password" matInput placeholder="Confirmar Password">
+          <input [ngClass]="{'error': isValid('cpassword')}" formControlName="cpassword" type="password" matInput placeholder="Confirmar Password">
         </mat-form-field>
 
         <button mat-raised-button color="primary">Enviar</button>
