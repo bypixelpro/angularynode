@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from './auth.service';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class RegisterComponent {
   form: any;
-  constructor(private fb: FormBuilder){
+  constructor(private fb: FormBuilder, private auth: AuthService){
     this.form = fb.group({
       nombre: ['', Validators.required],
       apellidos: ['', Validators.required],
@@ -25,6 +26,7 @@ export class RegisterComponent {
 
   onSubmit(){
     console.log(this.form.errors);
+    this.auth.register(this.form.value);
   }
 
   isValid(control){
