@@ -25,7 +25,7 @@
           <mat-label>Confirmar Password:</mat-label>
           <input [ngClass]="{'error': isValid('cpassword')}" formControlName="cpassword" type="password" matInput placeholder="Confirmar Password">
         </mat-form-field>
-
+        <span *ngIf="form.errors?.isntSame">El password debe coincidir<br></span>
         <button mat-raised-button color="primary">Enviar</button>
       </form>
     </mat-card>
