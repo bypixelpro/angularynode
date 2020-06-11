@@ -15,6 +15,10 @@ import { Component } from '@angular/core';
     <mat-icon>assignment_turned_in</mat-icon>
     <span>Tareas</span>
   </button>
+  <button mat-menu-item routerLink="/register">
+    <mat-icon>assignment_ind</mat-icon>
+    <span>Registro</span>
+  </button>
 </mat-menu>
   </mat-toolbar>
     `

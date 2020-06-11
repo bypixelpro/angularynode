@@ -13,6 +13,7 @@ export class AuthService {
   constructor(private http: HttpClient, private _snackBar: MatSnackBar) {}
 
   register(user) {
+        delete user.cpassword;
         this.http.post(this.APIURL + '/register', user).subscribe(res => {
         }, error => {
         this.manejadorErrores('No se ha podido registrar al usuario');
