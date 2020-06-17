@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'nav',
@@ -20,11 +21,19 @@ import { Component } from '@angular/core';
     <span>Registro</span>
   </button>
 </mat-menu>
+<span style="flex: 1 1 auto"></span>
+<span *ngIf="ident" >Bienvenido {{name}}</span>
   </mat-toolbar>
     `
 })
 export class NavComponent {
 
-  constructor(){}
+  name: string;
+  ident: boolean;
+  constructor(private auth: AuthService){
+    this.name = auth.name;
+    this.ident = auth.identificado;
+
+  }
 
 }
