@@ -22,6 +22,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { WebService } from './web.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './auth.service';
+import { LoginComponent } from './login.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { AuthService } from './auth.service';
     NuevaTareaComponent,
     NavComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
