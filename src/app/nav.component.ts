@@ -24,6 +24,10 @@ import { AuthService } from './auth.service';
     <mat-icon>assignment_ind</mat-icon>
     <span>Registro</span>
   </button>
+  <button mat-menu-item routerLink="/" (click)="logout()">
+    <mat-icon>highlight_off</mat-icon>
+    <span>Salir</span>
+  </button>
 </mat-menu>
 <span style="flex: 1 1 auto"></span>
 <span *ngIf="ident" >Bienvenido {{name}}</span>
@@ -38,6 +42,9 @@ export class NavComponent {
     this.name = auth.name;
     this.ident = auth.identificado;
 
+  }
+  logout(){
+    localStorage.clear();
   }
 
 }

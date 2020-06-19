@@ -22,6 +22,7 @@ export class AuthService {
     return !!localStorage.getItem('token');
   }
 
+
   register(user) {
         delete user.cpassword;
         this.http.post(this.APIURL + '/register', user).subscribe(res => {
